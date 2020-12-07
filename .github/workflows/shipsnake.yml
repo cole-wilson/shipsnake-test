@@ -26,7 +26,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install shipsnake
-          shipsnake -y build --mac-only --installer-only build ${{ steps.get_version.outputs.VERSION }}
+          shipsnake -y build ${{ steps.get_version.outputs.VERSION }}
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
