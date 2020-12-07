@@ -88,6 +88,8 @@ def main(version,arguments,nointeraction=False):
 		if file_name in ["setup.py","shipsnake.toml"]:
 			continue
 		shutil.move(os.path.join(source_dir, file_name), target_dir+os.sep+file_name)
+	for filename in glob.glob(target_dir+os.sep+'LICE*'):
+		shutil.copyfile(filename,'LICENSE')
 	open(target_dir+'__init__.py','w+').write('# This file must exist, empty or not')
 	if data['file']!="" and not os.path.isfile(data['short_name']+os.sep+'__main__.py'):
 		try:
@@ -151,6 +153,7 @@ def main(version,arguments,nointeraction=False):
 		]
 		print(options)
 		PyInstaller.__main__.run(options)
+		print('removing '+data['name']+".spec...")
 		os.remove(data['name']+".spec")
 	# ============== Generate Installer Package ===============================================
 

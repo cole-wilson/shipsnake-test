@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # +------------------------+                       
 # | Created with ShipSnake |                       
 # |                        |                       
@@ -17,7 +19,7 @@ except:
 
 setuptools.setup(
     name="shipsnake",
-    version="0.0.21",
+    version="0.0.22",
 		scripts=['bin/shipsnake'],
 #		entry_points={
 #			'console_scripts': ['shipsnake=shipsnake.__main__'],
