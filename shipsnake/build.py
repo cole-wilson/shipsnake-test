@@ -153,9 +153,7 @@ def main(version,arguments,nointeraction=False):
 		PyInstaller.__main__.run(options)
 		os.remove(data['name']+".spec")
 	# ============== Generate Installer Package ===============================================
-	print('--'*100)
-	for x in os.listdir('./dist'):
-		print(x)
+
 	if not doinstall:
 		pass
 	elif sys.platform.startswith('win'):#WINDOWS
@@ -173,7 +171,7 @@ def main(version,arguments,nointeraction=False):
 			version=version,
 			icns=''
 		))
-		os.system(f'dmgbuild -s .{os.sep}build{os.sep}settings.py "{data["name"]}" {data["short_name"]}-macos-{version}.dmg')
+		os.system(f'cat build/settings.py;dmgbuild -s .{os.sep}build{os.sep}settings.py "{data["name"]}" {data["short_name"]}-macos-{version}.dmg')
 	else:
 		print(f'Installer creation not yet supported for {sys.platform}!')
 	# ============== Generate Github Actions Workflow ===============================================
