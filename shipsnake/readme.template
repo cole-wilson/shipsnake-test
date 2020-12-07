@@ -1,0 +1,13 @@
+# {name}
+{short_description}
+
+{description}
+### Installation
+##### Pip:
+run `pip3 install {short_name}`
+
+### Usage
+### Contributors
+ - {author}
+### Contact
+<{email}>

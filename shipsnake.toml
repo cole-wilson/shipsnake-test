@@ -1,0 +1,24 @@
+name = "ShipSnake"
+short_name = "shipsnake"
+author = "Cole Wilson"
+email = "cole@colewilson.xyz"
+short_description = "A quick and easy way to distribute your python projects!"
+url = "https://github.com/cole-wilson/shipsnake"
+license = "MIT"
+keywords = "ship distribute package snake python freeze shipsnake setuptools"
+data_files = [ "*.txt", "*.template",]
+file = "main.py"
+modules = [ "toml",]
+description = "long_desc"
+bundle_id = "com.colewilson.shipsnake"
+latest_build = "0.0.17"
+
+[build]
+type = "1"
+mac = true
+windows = true
+installer = true
+actions = true
+homebrew = false
+bundle_id = "com.colewilson.shipsnake"
+github = "cole-wilson/shipsnake-test"

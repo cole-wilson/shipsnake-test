@@ -1,0 +1,38 @@
+import os
+import glob
+
+filename = "{short_name}-macos-{version}.dmg"
+volume_name = "{name}"
+format = "UDZO"
+files = [ './dist/{name}' ]
+symlinks = {{ 'Applications': '/Applications' }}
+badge_icon = '{icns}'
+con_locations = {{
+    '{name}': (100, 100),
+    'Applications': (300, 100)
+}}
+background = 'builtin-arrow'
+show_status_bar = False
+show_tab_view = False
+show_toolbar = False
+show_pathbar = False
+show_sidebar = False
+sidebar_width = 180
+default_view = 'icon-view'
+show_icon_preview = True
+include_icon_view_settings = 'auto'
+include_list_view_settings = 'auto'
+arrange_by = None
+grid_offset = (0, 0)
+grid_spacing = 100
+scroll_position = (0, 0)
+label_pos = 'bottom' or 'right'
+text_size = 16
+icon_size = 128
+if len(glob.glob('LICEN*')) > 0:
+	license = {{
+	    'default-language': 'en_US',
+	    'licenses': {{
+				'English': open(glob.glob('LICEN*')[0]).read(),
+	    }}
+	}}
