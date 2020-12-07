@@ -171,7 +171,8 @@ def main(version,arguments,nointeraction=False):
 			version=version,
 			icns=''
 		))
-		os.system(f'cat build/settings.py;dmgbuild -s .{os.sep}build{os.sep}settings.py "{data["name"]}" {data["short_name"]}-macos-{version}.dmg')
+		os.system(f'cat build/settings.py;dmgbuild -s .{os.sep}build{os.sep}settings.py "{data["name"]}" app.dmg')
+
 	else:
 		print(f'Installer creation not yet supported for {sys.platform}!')
 	# ============== Generate Github Actions Workflow ===============================================

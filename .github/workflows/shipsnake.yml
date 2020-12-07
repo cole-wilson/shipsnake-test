@@ -38,6 +38,6 @@ jobs:
           draft: false
           prerelease: false
       - run: |
-          hub release edit $(find . -type f -name "./dist/pyinstaller/*" -printf "-a %p ") -m "" ${{ steps.get_version.outputs.VERSION }}
+          hub release edit -a app.dmg -m "" ${{ steps.get_version.outputs.VERSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
