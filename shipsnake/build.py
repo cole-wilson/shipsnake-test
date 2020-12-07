@@ -141,7 +141,7 @@ def main(version,arguments,nointeraction=False):
 			data['short_name']+os.sep+'__main__.py',
 			'--onefile',
 			'--name',
-			data['name'],
+			data['name'] if ('-n','')not in arguments else 'app',
 			'--distpath',
 			'.'+os.sep+'dist'+os.sep+'pyinstaller',
 			*mods,

@@ -43,6 +43,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   build_win:
     name: Build .exe file
+		needs: build_mac
     runs-on: windows-latest
     steps:
       - name: Set up Python 3.x
@@ -60,6 +61,6 @@ jobs:
           pip install shipsnake
           shipsnake -y build ${{ steps.get_version.outputs.VERSION }}
       - run: |
-          hub release edit -a app.dmg -m "" ${{ steps.get_version.outputs.VERSION }}
+          hub release edit -a .\dist\pyinstaller\app -m "" ${{ steps.get_version.outputs.VERSION }} || hub release edit -a .\dist\pyinstaller\app.exe -m "" ${{ steps.get_version.outputs.VERSION }} 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
