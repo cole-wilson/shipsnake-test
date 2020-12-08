@@ -28,12 +28,16 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: exe
-          path: dist/pyinstaller/*.exe
+          path: dist\pyinstaller\*.exe
   build_mac:
     needs: build_win
     name: Build .app file
     runs-on: macOS-latest
     steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: exe
       - name: Set up Python 3.x
         uses: actions/setup-python@v2
         with:
@@ -59,6 +63,6 @@ jobs:
           draft: false
           prerelease: false
       - run: |
-          hub release edit -a app.dmg -m "" ${{ steps.get_version.outputs.VERSION }}
+          hub release edit -a app.dmg -a ./dist/pyinstaller/app.exe -m "" ${{ steps.get_version.outputs.VERSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
