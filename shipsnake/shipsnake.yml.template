@@ -64,3 +64,4 @@ jobs:
           hub release edit -a .\dist\pyinstaller\app -m "" ${{ steps.get_version.outputs.VERSION }} || hub release edit -a .\dist\pyinstaller\app.exe -m "" ${{ steps.get_version.outputs.VERSION }} 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#
