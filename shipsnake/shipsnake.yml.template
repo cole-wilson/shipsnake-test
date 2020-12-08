@@ -30,7 +30,7 @@ jobs:
           name: exe
           path: dist/pyinstaller/*.exe
   build_mac:
-		needs: build_win
+    needs: build_win
     name: Build .app file
     runs-on: macOS-latest
     steps:
