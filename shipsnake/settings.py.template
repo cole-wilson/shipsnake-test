@@ -33,6 +33,6 @@ if len(glob.glob('LICEN*')) > 0:
 	license = {{
 	    'default-language': 'en_US',
 	    'licenses': {{
-				'English': open(glob.glob('LICEN*')[0]).read(),
+				'en_US': open(glob.glob('LICEN*')[0]).read(),
 	    }}
 	}}

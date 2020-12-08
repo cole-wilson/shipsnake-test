@@ -23,13 +23,14 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install shipsnake
-          python -m shipsnake -y build ${ steps.get_version.outputs.VERSION }
+          python -m shipsnake -y build app
       - uses: actions/checkout@v2
       - uses: actions/upload-artifact@v2
         with:
           name: exe
-          path: dist/pyinstaller/app
+          path: dist/pyinstaller/*.exe
   build_mac:
+		needs: build_win
     name: Build .app file
     runs-on: macOS-latest
     steps:
