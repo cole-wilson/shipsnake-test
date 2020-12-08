@@ -19,7 +19,7 @@ except:
 
 setuptools.setup(
     name="shipsnake",
-    version="0.0.35",
+    version="0.0.36",
 		scripts=['bin/shipsnake'],
 #		entry_points={
 #			'console_scripts': ['shipsnake=shipsnake.__main__'],
