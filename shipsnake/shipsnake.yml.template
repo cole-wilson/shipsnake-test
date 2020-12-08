@@ -1,7 +1,7 @@
 on:
-  create: tags
-#  push:
-#    branches: [ master ]
+  push:
+    tags:
+    - '*'
 
 name: Upload Release Asset
 
