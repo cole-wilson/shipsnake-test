@@ -5,7 +5,7 @@ import sys
 import getopt
 import os
 
-he = "Provide a mode:\n\tshipsnake [wizard | build | dev | upload]"
+he = "Provide a mode:\n\tshipsnake [wizard | build | dev | release]"
 
 try:
 	arguments, ids = getopt.getopt(sys.argv[1:], "y", ['pypi-only','pyinstaller-only','homebrew-only','actions-only','windows-only','mac-only'])
@@ -44,10 +44,10 @@ elif mode == "build":
 	import shipsnake.build as build
 	build.main(version,arguments,nointeraction=noint)
 
-elif mode == "upload":
-	import shipsnake.upload as upload
-	upload.main(arguments,ids)
-# elif mode in ["build","dev","upload"]:
+elif mode == "release":
+	import shipsnake.release as release
+	release.main(arguments,ids)
+# elif mode in ["build","dev","release"]:
 
 
 # 	elif mode == "dev":
@@ -58,11 +58,11 @@ elif mode == "upload":
 # 	print(f'Illegeal option `{mode}`')
 # 	sys.exit(0)
 
-# if mode=="upload":
+# if mode=="release":
 # 	print("Please make sure that you have a https://pypi.org/ account.")
 # 	try:
 # 		import twine
 # 	except:
 # 		input('Press enter to continue installing `twine`. Press ctrl+x to exit.')
 # 		os.system('python3 -m pip install --user --upgrade twine || python3 -m pip install --upgrade twine')
-# 	os.system('python3 -m twine upload dist'+os.sep+'*')
+# 	os.system('python3 -m twine release dist'+os.sep+'*')
