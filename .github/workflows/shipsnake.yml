@@ -57,9 +57,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install shipsnake
-          shipsnake -y build ${ steps.get_version.outputs.VERSION }
+          python -m shipsnake -y build ${ steps.get_version.outputs.VERSION }
       - run: |
-          hub release edit -a .\dist\pyinstaller\app -m "" ${ steps.get_version_two.outputs.VERSION }
+          hub release edit -a .\dist\pyinstaller\app -m "Download Mac and Windows apps here." ${ steps.get_version_two.outputs.VERSION }
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #
