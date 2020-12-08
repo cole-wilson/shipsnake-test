@@ -11,7 +11,8 @@ file = "main.py"
 modules = [ "toml",]
 description = "long_desc"
 bundle_id = "com.colewilson.shipsnake"
-latest_build = "0.0.26"
+latest_build = "0.0.33"
+icon = ""
 
 [build]
 type = "1"
@@ -21,4 +22,4 @@ installer = true
 actions = true
 homebrew = false
 bundle_id = "com.colewilson.shipsnake"
-github = "cole-wilson/shipsnake-test"
+github = "cole-wilson/shipsnake"

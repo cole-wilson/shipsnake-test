@@ -60,9 +60,9 @@ def main():
 			print("\033[1;34m"+str(questions2[key])+"\033[0m "+str(data['build'][key]))
 	if (data['build']['mac'] or data['build']['windows']):
 		if 'installer' in data['build']:
-			print("\033[0m"+"Would you like to provide an installer for the app(s)? (reccomended) [y/n]"+"\033[0m "+str(data['build']['installer']))
+			print("\033[0m"+"Would you like to provide an installer for the app(s)? (recomended) [y/n]"+"\033[0m "+str(data['build']['installer']))
 		else:
-			data['build']['installer'] = True if input("\033[1;34m"+"Would you like to provide an installer for the app(s)? (reccomended) [y/n]"+"\033[0m ")[0]=="y" else False
+			data['build']['installer'] = True if input("\033[1;34m"+"Would you like to provide an installer for the app(s)? (recomended) [y/n]"+"\033[0m ")[0]=="y" else False
 
 	if not sys.platform.startswith('win') and data['build']['windows']:
 		print('\033[1;31mYou can only make a Windows app on a Windows computer.\033[0m')
@@ -94,7 +94,7 @@ def main():
 		if 'github' not in data['build']:
 			ghrepo = True if input('\033[1;34mDo you have a GitHub repo for this project yet? [y/n] \033[0m')[0] == 'y' else False
 			if not ghrepo:
-				create = True if input('\033[1;34mWould you like me to create one? [y/n] \033[0m')[0] == 'y' else False
+				create = True if input('\033[1;34mWould you like me to create one? (strongly recommended) [y/n] \033[0m')[0] == 'y' else False
 				if create:
 					print('\033[1;31mGo to https://github.com/new and create a repo called `'+data['short_name']+'`. When you\'ve done that, come back here and push enter.\033[0m')
 					input('')
@@ -111,9 +111,13 @@ def main():
 		else:
 			print('\033[1;34mDo you have a GitHub repo for this project yet? [y/n] \033[0my')
 	open('README.md','w+').write(open(prefix+os.sep+'readme.template').read().format(**data))
-	if 'bundle_id' not in data:
-		data['bundle_id'] = f"com.{data['author'].lower().replace(' ','')}.{data['short_name']}"
-
+	if 'bundle_id' not in data['build']:
+		data['build']['bundle_id'] = f"com.{data['author'].lower().replace(' ','')}.{data['short_name']}"
+	if 'homebrew' not in data['build']:
+		data['homebrew'] = False
+	if 'icon' not in data:
+		data['icon'] = ''
+	
 	f = open('.'+os.sep+'shipsnake.toml','w+')
 	f.write(toml.dumps(data))
 	f.close()

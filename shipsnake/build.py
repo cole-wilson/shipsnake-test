@@ -62,7 +62,7 @@ def main(version,arguments,nointeraction=False):
 		os.mkdir('bin')
 	except:
 		pass
-	open("bin"+os.sep+data['short_name'],'w+').write(f"#!"+os.sep+"usr"+os.sep+"bin"+os.sep+f"env bash\npython3 -m {data['short_name']} $@ || echo 'Error. Please re-install shipsnake with:\\n`pip3 install shipsnake --upgrade`'")
+	open("bin"+os.sep+data['short_name'],'w+').write(f"#!"+os.sep+"usr"+os.sep+"bin"+os.sep+f"env bash\npython3 -m {data['short_name']} $@")
 
 	# ============== Generate setup.py ===============================================
 	with open(prefix+os.sep+'setup.py.template') as datafile:
@@ -75,7 +75,7 @@ def main(version,arguments,nointeraction=False):
 	open('setup.py','w+').write(setup)
 
 	# ============== Generate directory structure ===============================================
-	open('.'+os.sep+'.gitignore','w+').write(open(prefix+os.sep+'.gitignore.template').read().replace('/',os.sep))
+	open('.'+os.sep+'.gitignore','w+').write(open(prefix+os.sep+'gitignore.template').read().replace('/',os.sep))
 	source_dir = os.getcwd()
 	target_dir = data["short_name"]+os.sep
 	types = ('*.py',*data["data_files"])
@@ -172,7 +172,7 @@ def main(version,arguments,nointeraction=False):
 		open('build'+os.sep+'settings.py','w+').write(open(prefix+os.sep+'settings.py.template').read().format(
 			**data,
 			version=version,
-			icns=''
+			icns=data['icon']
 		))
 		os.system(f'cat build/settings.py;dmgbuild -s .{os.sep}build{os.sep}settings.py "{data["name"]}" app.dmg')
 

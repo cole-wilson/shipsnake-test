@@ -9,7 +9,7 @@ symlinks = {{ 'Applications': '/Applications' }}
 badge_icon = '{icns}'
 con_locations = {{
     '{name}': (100, 100),
-    'Applications': (600, 100)
+    'Applications': (6000, 100)
 }}
 background = 'builtin-arrow'
 show_status_bar = False
@@ -28,7 +28,7 @@ grid_spacing = 100
 scroll_position = (0, 0)
 label_pos = 'bottom' or 'right'
 text_size = 16
-icon_size = 128
+icon_size = 48
 if len(glob.glob('LICEN*')) > 0:
 	license = {{
 	    'default-language': 'en_US',

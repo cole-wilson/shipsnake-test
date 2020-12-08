@@ -1,7 +1,5 @@
 on:
-  create:
-    tags:
-      - v*
+  create: tags
 #  push:
 #    branches: [ master ]
 
@@ -51,7 +49,7 @@ jobs:
         with:
           python-version: '3.x'
       - name: Get the version
-        id: get_version
+        id: get_version_two
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
       - name: Checkout code
         uses: actions/checkout@v2
@@ -61,7 +59,7 @@ jobs:
           pip install shipsnake
           shipsnake -y build ${{ steps.get_version.outputs.VERSION }}
       - run: |
-          hub release edit -a .\dist\pyinstaller\app -m "" ${{ steps.get_version.outputs.VERSION }} || hub release edit -a .\dist\pyinstaller\app.exe -m "" ${{ steps.get_version.outputs.VERSION }} 
+          hub release edit -a .\dist\pyinstaller\app -m "" ${{ steps.get_version_two.outputs.VERSION }} || hub release edit -a .\dist\pyinstaller\app.exe -m "" ${{ steps.get_version_two.outputs.VERSION }} 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #
