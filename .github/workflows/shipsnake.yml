@@ -28,8 +28,9 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: exe
-          path: dist/pyinstaller/app
+          path: dist/pyinstaller/*.exe
   build_mac:
+		needs: build_win
     name: Build .app file
     runs-on: macOS-latest
     steps:
