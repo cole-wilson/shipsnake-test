@@ -11,7 +11,7 @@ file = "main.py"
 modules = [ "toml",]
 description = "long_desc"
 bundle_id = "com.colewilson.shipsnake"
-latest_build = "0.0.23"
+latest_build = "0.0.24"
 
 [build]
 type = "1"

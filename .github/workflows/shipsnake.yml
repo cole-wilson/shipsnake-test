@@ -43,7 +43,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   build_win:
     name: Build .exe file
-		needs: build_mac
+    needs: build_mac
     runs-on: windows-latest
     steps:
       - name: Set up Python 3.x
