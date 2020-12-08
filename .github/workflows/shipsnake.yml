@@ -23,7 +23,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install shipsnake
-          python -m shipsnake -y build ${{ steps.get_version.outputs.VERSION }}
+          python -m shipsnake -y build app
       - uses: actions/checkout@v2
       - uses: actions/upload-artifact@v2
         with:
